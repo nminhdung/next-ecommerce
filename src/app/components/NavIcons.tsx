@@ -56,8 +56,8 @@ function NavIcons() {
         >
           2
         </div>
+        {isCartOpen && <CartModal />}
       </div>
-      {isCartOpen && <CartModal />}
     </div>
   );
 }
