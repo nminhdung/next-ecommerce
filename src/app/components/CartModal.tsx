@@ -4,7 +4,7 @@ import React from "react";
 function CartModal() {
   const cartItems: boolean = true;
   return (
-    <div className="w-max absolute p-4 bg-white rounded-lg shadow-md  top-12 right-0 flex flex-col gap-6">
+    <div className="w-max absolute p-4 bg-white rounded-lg shadow-md  top-12 right-0 flex flex-col gap-6 z-10">
       {cartItems ? (
         <>
           <h2 className="">Shopping Cart</h2>

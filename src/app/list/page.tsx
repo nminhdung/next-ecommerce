@@ -1,8 +1,15 @@
 import Filter from "@/app/components/Filter";
 import ProductList from "@/app/components/ProductList";
+import { wixClientServer } from "@/app/lib/wixClientServer";
 import Image from "next/image";
+import { Suspense } from "react";
 
-function ListPage() {
+async function ListPage({ searchParams }: { searchParams: any }) {
+  console.log(searchParams);
+  const wixClient = await wixClientServer();
+  const res = await wixClient.collections.getCollectionBySlug(
+    searchParams.cat || "all-products"
+  );
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
       <div className="hidden bg-pink-50 p-4 sm:flex justify-between h-64 ">
@@ -20,10 +27,18 @@ function ListPage() {
         </div>
       </div>
       {/* FILTER */}
-      <Filter/>
+      <Filter />
       {/* PRODUCTS */}
-      <h1 className='mt-12 font-semibold'>Shoes for you</h1>
-      <ProductList/>
+      <h1 className="mt-12 font-semibold">{res.collection?.name} for you</h1>
+      <Suspense fallback={"loading"}>
+        {/* id: 00000000-000000-000000-000000000001 : all-products */}
+        <ProductList
+          categoryId={
+            res.collection?._id || "00000000-000000-000000-000000000001"
+          }
+          searchParams={searchParams}
+        />
+      </Suspense>
     </div>
   );
 }

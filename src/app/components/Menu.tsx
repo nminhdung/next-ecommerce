@@ -13,11 +13,11 @@ function Menu() {
         width={28}
         height={28}
         className="cursor-pointer"
-        onClick={() => setOpenMenu((preOpenMenu) => !preOpenMenu)}
+        onClick={() => setOpenMenu((prev) => !prev)}
       />
       {openMenu && (
         <div
-          className="absolute bg-black text-white left-0 top-20 
+          className="absolute bg-black text-white left-0 top-20  z-50
             w-full h-[calc(100vh-80px)] flex flex-col justify-center gap-8 items-center text-xl"
         >
           <Link href="/">Homepage</Link>

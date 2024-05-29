@@ -29,7 +29,7 @@ function NavIcons() {
         onClick={handleProfile}
       />
       {isProfileOpen && (
-        <div className="flex flex-col absolute rounded-md p-4 top-12 text-sm shadow-md z-20">
+        <div className="flex flex-col absolute rounded-md p-4 top-12 text-sm shadow-md z-20 bg-white">
           <Link href="/">Profile</Link>
           <div className="mt-2 cursor-pointer">Logout</div>
         </div>
